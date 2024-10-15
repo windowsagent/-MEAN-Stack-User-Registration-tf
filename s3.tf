@@ -1,5 +1,6 @@
 resource "aws_s3_bucket" "www_bucket" {
   bucket = "www.${var.bucket_name}"
+  force_destroy = true
 
   tags = {
     Name = "Angular Static Website"
