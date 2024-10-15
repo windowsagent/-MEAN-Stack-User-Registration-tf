@@ -24,7 +24,7 @@ spec:
             - name: MONGODB_URI
               value: "mongodb://mongo:27017/MEANStackDB"
             - name: PORT
-              value: 3000
+              value: "3000"
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
