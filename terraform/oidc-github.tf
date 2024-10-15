@@ -8,20 +8,23 @@ module "oidc-github" {
   ]
 
   iam_role_inline_policies = {
-    "s3-bucket-site-policy": data.aws_iam_policy_document.s3_bucket_site_policy.json
+    "ecr-container-policy": data.aws_iam_policy_document.ecr_container_policy.json
   }
 }
 
 
-data "aws_iam_policy_document" "s3_bucket_site_policy" {
+data "aws_iam_policy_document" "ecr_container_policy" {
   statement {
     actions   = [
-        "s3:PutObject",
-        "s3:GetObject",
-        "s3:DeleteObject",
-        "s3:ListBucket"
+      "ecr:GetDownloadUrlForLayer",
+      "ecr:BatchGetImage",
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:PutImage",
+      "ecr:InitiateLayerUpload",
+      "ecr:UploadLayerPart",
+      "ecr:CompleteLayerUpload"
     ]
     effect    = "Allow"
-    resources = ["${aws_s3_bucket.www_bucket.arn}/*"]
+    resources = ["*"]
   }
 }
