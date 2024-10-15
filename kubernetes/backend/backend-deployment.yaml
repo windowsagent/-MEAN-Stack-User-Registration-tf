@@ -22,7 +22,7 @@ spec:
               protocol: TCP
           env:
             - name: MONGODB_URI
-              value: mongodb://mongo:27017/MEANStackDB
+              value: "mongodb://mongo:27017/MEANStackDB"
             - name: PORT
               value: 3000
 ---
