@@ -3,7 +3,8 @@ module "oidc-github" {
   version = "1.8.0"
 
   github_repositories = [
-    "windowsagent/MEAN-Stack-User-Registration-Front-End"
+    "windowsagent/MEAN-Stack-User-Registration-Front-End",
+    "windowsagent/MEAN-Stack-User-Registration---Back-End"
   ]
 
   iam_role_inline_policies = {
