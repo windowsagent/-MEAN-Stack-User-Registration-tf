@@ -14,6 +14,26 @@ module "aws_load_balancer_controller_irsa_role" {
   }
 }
 
+resource "aws_iam_role_policy" "elb_policy_attachment" {
+  name = "elb-permission-eks"
+  role = module.aws_load_balancer_controller_irsa_role.iam_role_name
+
+  policy = <<-EOF
+  {
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "elasticloadbalancing:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+  }
+  EOF
+}
+
 resource "helm_release" "aws_load_balancer_controller" {
   name = "aws-load-balancer-controller"
 
