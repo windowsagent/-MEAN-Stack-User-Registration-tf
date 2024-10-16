@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: global-triangles-frontend
+spec:
+  selector:
+    matchLabels:
+      app: global-triangles-frontend
+  replicas: 1
+  template:
+    metadata:
+      name: global-triangles-frontend
+      labels:
+        app: global-triangles-frontend
+    spec:
+      containers:
+        - name: global-triangles-frontend
+          image: public.ecr.aws/a2x9x9v5/global-triangles/frontend:latest
+          ports:
+            - containerPort: 80
+              protocol: TCP
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: global-triangles-frontend
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: global-triangles-frontend
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 80

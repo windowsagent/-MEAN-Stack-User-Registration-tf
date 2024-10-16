@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: global-triangles-backend
+  name: api
 spec:
   selector:
     app: global-triangles-backend
@@ -10,21 +10,3 @@ spec:
    - protocol: TCP
      port: 3000
      targetPort: 3000
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: global-triangles-backend
-  annotations:
-    kubernetes.io/ingress.class: "traefik"
-spec:
-  rules:
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: global-triangles-backend
-            port:
-              number: 3000
