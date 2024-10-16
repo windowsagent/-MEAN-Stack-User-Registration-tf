@@ -18,6 +18,7 @@ data "aws_iam_policy_document" "ecr_container_policy" {
     actions   = [
       "ecr:*",
       "ecr-public:*",
+      "sts:GetServiceBearerToken",
       "cloudtrail:LookupEvents",
       "iam:CreateServiceLinkedRole"
     ]
