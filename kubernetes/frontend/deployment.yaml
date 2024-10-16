@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: global-triangles-frontend
-          image: public.ecr.aws/a2x9x9v5/global-triangles/frontend:12bae1599db0a39fd6b9e44cbf1ca27e2a6fb17f
+          image: public.ecr.aws/a2x9x9v5/global-triangles/frontend:904fa75dfa9d3fd097eb77d6f4cca162106d27e8
           ports:
             - containerPort: 80
               protocol: TCP
