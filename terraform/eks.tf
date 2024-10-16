@@ -15,7 +15,7 @@
 
   eks_managed_node_group_defaults = {
     disk_size              = 20
-    instance_types         = ["t3.micro"]
+    instance_types         = ["t3.small"]
   }
 
   eks_managed_node_groups = {
