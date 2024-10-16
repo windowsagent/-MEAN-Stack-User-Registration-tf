@@ -10,6 +10,7 @@ spec:
    - protocol: TCP
      port: 80
      targetPort: 80
+  type: NodePort
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -20,11 +21,9 @@ metadata:
     kubernetes.io/ingress.class: "alb"
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
 spec:
   rules:
-  - host: mean.knox.pp.ua
-    http:
+  - http:
       paths:
       - path: /
         pathType: Prefix
